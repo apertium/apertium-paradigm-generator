@@ -19,6 +19,7 @@ const POS_NAMES = {
   verb: "Verbs",
   verb_iv: "Intransitive verbs",
   verb_tv: "Transitive verbs",
+  vaux: "Auxiliary verbs",
   verb_ia: "Intransitive Animate (IA) verbs",
   verb_ti: "Transitive Inanimate (TI) verbs",
   verb_ta: "Transitive Animate (TA) verbs",
@@ -34,7 +35,8 @@ const POS_SUBCATS = {
   kaz: {
     verb: { 
       verb_iv: ["v.iv"],
-      verb_tv: ["v.tv"]
+      verb_tv: ["v.tv"],
+      vaux: ["vaux"]
     }
   },
   unm: {
