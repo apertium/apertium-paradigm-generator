@@ -2,7 +2,7 @@ var hiddenTags = [];
 
 //Specify APY URL
 //const APY_URL = "https://beta.apertium.org/apy/";
-const APY_URL = "http://localhost:2738/";
+const APY_URL = "http://xinkontep.swarthmore.edu:2738/";
 
 // POS Categories. Keys are according to Universal Dependencies
 const POS_CATS = {
@@ -33,19 +33,25 @@ const POS_NAMES = {
 
 const POS_SUBCATS = {
   kaz: {
-    verb: { 
+    verb: {
       verb_iv: ["v.iv"],
       verb_tv: ["v.tv"],
       vaux: ["vaux"]
     }
   },
   unm: {
-    verb: { 
+    verb: {
       verb_ia: ["v.iv.aa"],
       verb_ti: ["v.tv.nn"],
       verb_ta: ["v.tv.aa"]
     }
-  }
+  },
+  ono: {
+    verb: {
+      verb_iv: ["v.iv"],
+      verb_tv: ["v.tv"],
+    }
+  },
 }
 
 /* const POS_SUPERCATS = {
@@ -63,5 +69,6 @@ var LANGS = {
     hyx_hyw: {name: "Western Armenian", data: null, keeptags: ['tv', 'iv','inch','pass_listed','pass','caus','caus_listed','subst','ant','m','f','al','cog','top']},
     hyx_hye: {name: "Eastern Armenian", data: null, keeptags: ['tv', 'iv','inch','pass_listed','pass','caus','caus_listed','subst','ant','m','f','al','cog','top']},
     spa: {name: "Spanish", data: null, keeptags: []},
-    unm: {name: "Lënape (Unami)", data: null, keeptags: ['iv', 'tv', 'aa', 'nn']}
+    unm: {name: "Lënape (Unami)", data: null, keeptags: ['iv', 'tv', 'aa', 'nn']},
+    ono: {name: "Onondaga", data: null, keeptags: ['iv', 'tv']}
 };
