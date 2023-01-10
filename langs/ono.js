@@ -38,11 +38,11 @@ function add_ono() {
         tabcols: ['Singular', 'Dual', 'Plural'],
 				tabrows: ['First person Inclusive', 'First person Exclusive','Second person',
                   'Third Person FemZoic', "Third Person Mascluine", "Third Person Feminine/Indefinite"],
-
+        
         tabdata: [
           [{tags: 'punct.fut.a1sg', height:2},{tags: 'punct.fut.a1duincl'},{tags: 'punct.fut.a1plincl'}],
 					[{tags: ''}, {tags: 'punct.fut.a1duexcl'},{tags: 'punct.fut.a1plexcl'}],
-					[{tags: 'punct.fut.a2sg'}, {tags: 'punct.fut.a2du'}, {tags: 'punct.fu.a2pl'}],
+					[{tags: 'punct.fut.a2sg'}, {tags: 'punct.fut.a2du'}, {tags: 'punct.fut.a2pl'}],
           [{tags: 'punct.fut.a3FZsg'}, {tags: 'punct.fut.a3FZdu'}, {tags: 'punct.fut.a3FZpl'}],
 					[{tags: 'punct.fut.a3Msg'}, {tags: 'punct.fut.a3Mdu'}, {tags: 'punct.fut.a3Mpl'}],
 					[{tags: 'punct.fut.a3FIsg'}]
