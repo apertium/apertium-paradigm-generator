@@ -293,6 +293,12 @@ function blob2html(blob, depth, context) {
     if (tag == 'td' && blob.hasOwnProperty('width')) {
       tag += ' colspan="'+blob.width+'"';
     }
+
+    //Trying to add rowspan
+    if (tag == 'td' && blob.hasOwnProperty('height')) {
+      tag += ' rowspan="'+blob.height+'"';
+    }
+
     if (blob.hasOwnProperty('text')) {
       ret += '<'+tag+'>'+blob.text+'</'+tag+'>';
     } else if (pre || post) {

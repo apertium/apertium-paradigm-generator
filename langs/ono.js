@@ -10,7 +10,7 @@ function add_ono() {
 
         tabdata: [
           [{tags: 'hab.a1sg', height:2},{tags: 'hab.a1duincl'},{tags: 'hab.a1plincl'}],
-					[{tags: ''}, {tags: 'hab.a1duexcl'},{tags: 'hab.a1plexcl'}],
+					[{tags: 'hab.a1duexcl'},{tags: 'hab.a1plexcl'}],
 					[{tags: 'hab.a2sg'}, {tags: 'hab.a2du'}, {tags: 'hab.a2pl'}],
           [{tags: 'hab.a3FZsg'}, {tags: 'hab.a3FZdu'}, {tags: 'hab.a3FZpl'}],
 					[{tags: 'hab.a3Msg'}, {tags: 'hab.a3Mdu'}, {tags: 'hab.a3Mpl'}],
@@ -41,7 +41,7 @@ function add_ono() {
         
         tabdata: [
           [{tags: 'punct.fut.a1sg', height:2},{tags: 'punct.fut.a1duincl'},{tags: 'punct.fut.a1plincl'}],
-					[{tags: ''}, {tags: 'punct.fut.a1duexcl'},{tags: 'punct.fut.a1plexcl'}],
+					[{tags: 'punct.fut.a1duexcl'},{tags: 'punct.fut.a1plexcl'}],
 					[{tags: 'punct.fut.a2sg'}, {tags: 'punct.fut.a2du'}, {tags: 'punct.fut.a2pl'}],
           [{tags: 'punct.fut.a3FZsg'}, {tags: 'punct.fut.a3FZdu'}, {tags: 'punct.fut.a3FZpl'}],
 					[{tags: 'punct.fut.a3Msg'}, {tags: 'punct.fut.a3Mdu'}, {tags: 'punct.fut.a3Mpl'}],
