@@ -293,8 +293,6 @@ function blob2html(blob, depth, context) {
     if (tag == 'td' && blob.hasOwnProperty('width')) {
       tag += ' colspan="'+blob.width+'"';
     }
-
-    //Trying to add rowspan
     if (tag == 'td' && blob.hasOwnProperty('height')) {
       tag += ' rowspan="'+blob.height+'"';
     }
