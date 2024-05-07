@@ -431,19 +431,35 @@ function set_pos() {
   }
 }
 
-// function create_chunk(elem) {
-// 	chunk = "<label for='${elem.title}list'>${elem.title}:</label>&nbsp;<select id='${elem.title}list'></select><br><br>";
-// 	return chunk;
-// }
+let ELEMS={}
+let LANGDATA={}
+let verbtype=""
+
+function add_chunk(elem) {
+	title = elem.title;
+	console.log(title);
+ 	chunk = "<label for='"+title+"list'>"+title+":</label>&nbsp;<select id='"+title+"list'></select><br><br>";
+	$('#remainder').append(chunk);
+	//console.log(elem.values, LANGDATA[verbtype])
+	if ('values' in elem) {
+		elem.values.forEach(function(val) {
+			$('#'+title+"list").append("<option value='"+val.tags+"'>"+val.label+"</option>");
+		});
+	} else if ('templates' in elem) {
+		elem.templates.forEach(function(val) {
+			$('#'+title+"list").append("<option value='"+val.templ+"'>"+val.label+"</option>");
+		});
+	}
+}
 
 function set_verb() {
 	let lang = $('#langname').data('code');
 	let verb = $('#verblist').val();
-	let verbtype = LANGS[lang].data.dix[verb].type;
-	let ELEMS = LANGS[lang].data[verbtype];
+	verbtype = LANGS[lang].data.dix[verb].type;
+	ELEMS = LANGS[lang].data[verbtype];
 	// console.log($.map(ELEMS, create_chunk(value, key))); // JNW PICK BACK UP HERE
-	// $('#remainder').html()
-	//console.log(ELEMS.forEach(create_chunk(elems)).join(''));
+	$('#remainder').html('')
+	ELEMS.forEach(add_chunk);
 }
 
 function update_template(lang, pos) {
@@ -460,6 +476,7 @@ $(document).ready(function() {
   let lang = searchParams.get('lang');
   load_lang(lang);
   let langName = LANGS[lang].name;
+  LANGDATA = LANGS[lang].data;
   $('#langname').html(langName);
   $('#langname').data('code', lang);
 
