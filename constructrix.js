@@ -437,8 +437,8 @@ let verbtype=""
 
 function add_chunk(elem) {
 	title = elem.title;
-	console.log(title);
- 	chunk = "<label for='"+title+"list'>"+title+":</label>&nbsp;<select id='"+title+"list'></select><br><br>";
+	//console.log(title);
+ 	chunk = "<label for='"+title+"list'>"+title+":</label>&nbsp;<select class='morphvalues'  data-seq='"+elem.seq+"' id='"+title+"list'></select><br><br>";
 	$('#remainder').append(chunk);
 	//console.log(elem.values, LANGDATA[verbtype])
 	if ('values' in elem) {
@@ -457,9 +457,53 @@ function set_verb() {
 	let verb = $('#verblist').val();
 	verbtype = LANGS[lang].data.dix[verb].type;
 	ELEMS = LANGS[lang].data[verbtype];
-	// console.log($.map(ELEMS, create_chunk(value, key))); // JNW PICK BACK UP HERE
-	$('#remainder').html('')
+	// console.log($.map(ELEMS, create_chunk(value, key)));
+	$('#remainder').html('');
 	ELEMS.forEach(add_chunk);
+	$('.morphvalues').change(update_output);
+	update_output(this);
+}
+
+if (!String.prototype.format) {
+	String.prototype.format = function() {
+		//var args = arguments;
+		var arr = arguments[0];
+		return this.replace(/{(\d+)}/g, function(match, number) {
+			//return typeof args[number] != 'undefined'
+			return typeof arr[number] != 'undefined'
+				? arr[number]
+				: match
+			;
+		});
+	};
+}
+
+function update_output() {
+	let lang = $('#langname').data('code');
+	let morphs = {}
+	morphs[1] = $('#verblist option:selected').data("base");
+	//console.log($('.morphvalues'));
+	$('.morphvalues').each(function(key, el) {
+		seq = $(el).data("seq");
+		if ((parseInt(seq) % 1 === 0)) { // if seq is a number (integer)
+			morphs[seq] = el.selectedOptions[0].value;
+		} else {
+			morphs['template'] = el.selectedOptions[0].value;
+		}
+	});
+	if ('template' in morphs) {
+		var to_generate = morphs['template'].format(morphs);
+	} else {
+		// FIXME: WRITE CODE TO ASSEMBLE ELEMENTS IN ORDER
+	}
+	$("#builtform").text("^"+to_generate+"$");
+	$.getJSON(APY_URL + "generate?lang=" + encodeURIComponent(lang) + "&q=" + encodeURIComponent(to_generate), function (data) {
+      //edit html values from the output of the APY
+      //runThruEditingNames(hiddenTag, data[0][0]);
+		$("#content").html(data[0][0]);
+    }, "html");
+
+	// JNW continue here
 }
 
 function update_template(lang, pos) {
@@ -489,9 +533,12 @@ $(document).ready(function() {
   $('#verblist').html(
     '<option value="null">---</option>'+
     Object.keys(LANGS[lang].data.dix).sort().map(function(word) {
-      return '<option value="'+word+'">'+word+'</option>';
+      return '<option class="verb" data-base="'+LANGS[lang].data.dix[word][1]+'" id="'+word+'list" value="'+word+'">'+word+'</option>';
     }).join('')
   );
+  //Object.keys(LANGS[lang].data.dix).sort().forEach(function(word) {
+  //  $('#'+word+'list').data("base", LANGS[lang].data.dix[word][1]);
+  //});
 
   //$('#Language').change(set_lang);
   //$('#POS').change(set_pos);
