@@ -3,8 +3,41 @@ function add_unm() {
     dix: {
       'see [something]': {1: 'nem<v><tv><nn>', type: 'verb_ti'},
       'cook [something]': {1: 'wixenin<v><tv><nn>', type: 'verb_ti'},
-      'have [something]': {1: 'ulhatu<v><tv><nn>', type: 'verb_ti'}
+      'have [something]': {1: 'ulhatu<v><tv><nn>', type: 'verb_ti'},
+      'be tired': {1: 'wikwihel<v><iv><aa>', type: 'verb_ai'},
+      'be sick': {1: 'pals<v><iv><aa>', type: 'verb_ai'},
+      'be sad': {1: 'shielìntàm<v><iv><aa>', type: 'verb_ai'},
+      'bake bread': {1: 'ahponhe<v><iv><aa>', type: 'verb_ai'}
     },
+    verb_ai: [
+      {title: 'Subject',
+       text: 'Who is the doer of the action?',
+       seq: 3,
+       values: [{label: 'I', tags: '<p1><sg>'},
+                {label: 'you (one person)', tags: '<p2><sg>'},
+                {label: 'he/she', tags: '<p3><sg>'},
+                {label: 'we (excluding you)', tags: '<p1><excl><pl>'},
+                {label: 'we (including you)', tags: '<p1><incl><pl>'},
+                {label: 'you all', tags: '<p2><pl>'},
+                {label: 'they', tags: '<p3><pl>'}
+               ]
+      },
+      {title: 'Negation',
+       text: 'Is the action done or not?',
+       seq: 2,
+       values: [{label: 'done', tags: ''},
+                {label: 'not', tags: '<neg>'}
+               ]
+      },
+      {title: 'Tense',
+       text: 'When does does the action take place?',
+       templates: [{label: 'past/present', templ: '{1}{2}{3}'},
+                   {label: 'future', templ: 'xu<adv>$ ^{1}{2}{3}'},
+                   {label: 'subordinative', templ: 'tëli<cnjsub>$ ^{1}<subord>{2}{3}'},
+                   {label: 'want to', templ: 'kata<vaux>+{1}{2}{3}'}
+                  ]
+      }
+    ],
     verb_ti: [
       {title: 'Subject',
        text: 'Who is the doer of the action?',
